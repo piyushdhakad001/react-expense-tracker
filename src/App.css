@@ -1,0 +1,40 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+/* background: black; */
+display: flex;
+justify-content: center;
+margin-top: 30px;
+}
+
+.container{
+ width: 90vw;
+ border: 1px solid;
+ padding: 10px;
+}
+.new-expense-div{
+  margin: 10px;
+   display: flex;
+   justify-content: space-between;
+
+}
+
+.expense-div{
+  margin: 10px;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   border: 1px solid;
+   padding: 5px;
+}
+.total-expense-div{
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid;
+  padding: 5px;
+}
