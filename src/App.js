@@ -19,6 +19,10 @@ useEffect(() => {
 }, []);
 
   const handleClick = () => {
+     if (!itemName.trim() || Number(money) <= 0) {
+  return;
+}
+
     const newExpense = {
       id: Date.now(),
       date: date,
