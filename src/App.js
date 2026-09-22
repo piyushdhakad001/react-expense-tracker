@@ -5,6 +5,21 @@ function App() {
   const [date, setDate] = useState("2026-09-21");
   const [itemName, setItemName] = useState("");
   const [money, setMoney] = useState("");
+  const [expenses, setExpenses] = useState([]);
+
+  const handleClick = () => {
+    const newExpense = {
+      id: Date.now(),
+      date: date,
+      itemName: itemName,
+      money: Number(money),
+    };
+
+    setExpenses([...expenses, newExpense]);
+
+    setItemName("");
+    setMoney("");
+  };
 
   return (
     <div className="container">
@@ -35,28 +50,36 @@ function App() {
           onChange={(e) => setMoney(e.target.value)}
         />
 
-        <button className="add-expense">
+        <button
+          className="add-expense"
+          onClick={handleClick}
+        >
           Add
         </button>
       </div>
 
-      <div className="expense-div">
-        <button className="delete-expense">
-          X
-        </button>
+      {expenses.map((expense) => (
+        <div
+          className="expense-div"
+          key={expense.id}
+        >
+          <button className="delete-expense">
+            X
+          </button>
 
-        <p className="expense-date">
-          [2026-09-21]
-        </p>
+          <p className="expense-date">
+            [{expense.date}]
+          </p>
 
-        <p className="expense-name">
-          piyush
-        </p>
+          <p className="expense-name">
+            {expense.itemName}
+          </p>
 
-        <p className="expense-money">
-          $1
-        </p>
-      </div>
+          <p className="expense-money">
+            ${expense.money}
+          </p>
+        </div>
+      ))}
 
       <div className="total-expense-div">
         <p className="text">
@@ -64,7 +87,7 @@ function App() {
         </p>
 
         <p className="total-dollars">
-          $1.00
+          $0.00
         </p>
       </div>
     </div>
