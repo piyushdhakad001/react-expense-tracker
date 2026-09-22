@@ -1,6 +1,11 @@
+import { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [date, setDate] = useState("2026-09-21");
+  const [itemName, setItemName] = useState("");
+  const [money, setMoney] = useState("");
+
   return (
     <div className="container">
       <p className="header">
@@ -11,17 +16,23 @@ function App() {
         <input
           type="date"
           className="item-date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
         />
 
         <input
           type="text"
           className="name"
           placeholder="Item Name"
+          value={itemName}
+          onChange={(e) => setItemName(e.target.value)}
         />
 
         <input
           type="number"
           className="money"
+          value={money}
+          onChange={(e) => setMoney(e.target.value)}
         />
 
         <button className="add-expense">
