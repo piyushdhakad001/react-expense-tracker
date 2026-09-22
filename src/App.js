@@ -21,10 +21,17 @@ function App() {
     setMoney("");
   };
 
+
   const totalExpenses = expenses.reduce(
   (total, expense) => total + expense.money,
   0
 );
+
+const handleClickDelete = (id) => {
+  setExpenses(
+    expenses.filter((expense) => expense.id !== id)
+  );
+};
 
   return (
     <div className="container">
@@ -68,7 +75,9 @@ function App() {
           className="expense-div"
           key={expense.id}
         >
-          <button className="delete-expense">
+          <button className="delete-expense"
+           onClick={() => handleClickDelete(expense.id)}
+          >
             X
           </button>
 
