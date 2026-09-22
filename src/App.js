@@ -21,6 +21,11 @@ function App() {
     setMoney("");
   };
 
+  const totalExpenses = expenses.reduce(
+  (total, expense) => total + expense.money,
+  0
+);
+
   return (
     <div className="container">
       <p className="header">
@@ -87,7 +92,7 @@ function App() {
         </p>
 
         <p className="total-dollars">
-          $0.00
+         ${totalExpenses.toFixed(2)}
         </p>
       </div>
     </div>
