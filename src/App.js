@@ -1,11 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
+  const [loaded, setLoaded] = useState(false);
   const [date, setDate] = useState("2026-09-21");
   const [itemName, setItemName] = useState("");
   const [money, setMoney] = useState("");
   const [expenses, setExpenses] = useState([]);
+
+useEffect(() => {
+  const saved = localStorage.getItem("expenses");
+
+  if (saved) {
+    setExpenses(JSON.parse(saved));
+  }
+
+  setLoaded(true);
+}, []);
 
   const handleClick = () => {
     const newExpense = {
@@ -26,6 +37,15 @@ function App() {
   (total, expense) => total + expense.money,
   0
 );
+
+useEffect(() => {
+  if (loaded) {
+    localStorage.setItem(
+      "expenses",
+      JSON.stringify(expenses)
+    );
+  }
+}, [expenses, loaded]);
 
 const handleClickDelete = (id) => {
   setExpenses(
