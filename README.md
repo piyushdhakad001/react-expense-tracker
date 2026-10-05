@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# Expense Tracker (React)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple expense tracker built with React. Add expenses with a date, name and amount, delete them, and see the running total. Data is saved in the browser, so it is still there after a refresh.
 
-## Available Scripts
+This is the React version of my vanilla JavaScript expense list.
 
-In the project directory, you can run:
+**Live demo:** [https://react-expense-tracker-silk-eight.vercel.app/]
 
-### `npm start`
+## Screenshot
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Expense Tracker screenshot](screenshot.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+*(Add a screenshot of the app and save it as `screenshot.png` in the project folder.)*
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Add an expense with a date, item name and amount
+- Delete any expense from the list
+- Total expenses update automatically and show 2 decimal places
+- Data is saved in `localStorage` and reloaded when the page opens
+- Input validation: an empty name or an amount of zero or less is not accepted
 
-### `npm run build`
+## Built With
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **React** (functional components and hooks)
+- **JavaScript (ES6+)**
+- **CSS3**
+- **Web Storage API** (`localStorage`)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
+   ```
+   git clone https://github.com/piyushdhakad001/react-expense-tracker.git
+   ```
+2. Go into the folder:
+   ```
+   cd react-expense-tracker
+   ```
+3. Install dependencies:
+   ```
+   npm install
+   ```
+4. Start the development server:
+   ```
+   npm run dev
+   ```
+5. Open the address shown in the terminal (usually `http://localhost:5173`).
 
-### `npm run eject`
+## How It Works
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **`useState`** holds the form inputs (`date`, `itemName`, `money`) and the `expenses` array. Each expense looks like this:
+  ```js
+  { id: 1758450000000, date: "2026-09-21", itemName: "Groceries", money: 25.5 }
+  ```
+- **`useEffect` (load):** runs once when the app starts and reads saved expenses from `localStorage`.
+- **`useEffect` (save):** runs whenever `expenses` changes and writes the array back to `localStorage`.
+- **`loaded` flag:** stops the save effect from running before the saved data has been read. Without it, the first render would overwrite saved expenses with an empty list.
+- **Adding:** `handleClick` checks the inputs, creates a new object with `Date.now()` as its `id`, and adds it with the spread operator.
+- **Deleting:** `handleClickDelete` uses `filter()` to keep every expense except the one with that `id`.
+- **Total:** `reduce()` adds up all the amounts, and `toFixed(2)` formats the result.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## What I Learned
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Using controlled inputs to manage form state in React
+- Using `useEffect` to load and save data
+- Avoiding a bug where saved data gets overwritten on the first render
+- Updating arrays without changing the original, using spread and `filter`
+- Rebuilding a vanilla JavaScript project in React
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Known Limitations
 
-## Learn More
+- The currency symbol is fixed to `$`
+- Individual amounts are shown as typed (for example `$25.5`), while only the total uses 2 decimal places
+- Expenses can't be edited after they are added, only deleted
+- Data is stored only in the current browser, so it is not shared between devices
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Future Improvements
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [ ] Edit existing expenses
+- [ ] Add categories and filter by category or date
+- [ ] Sort expenses by date
+- [ ] Format every amount with 2 decimal places
+- [ ] Add a monthly summary or chart
+- [ ] Export expenses to CSV
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
