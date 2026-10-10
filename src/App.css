@@ -1,4 +1,3 @@
-
 * {
   padding: 0;
   margin: 0;
@@ -7,62 +6,119 @@
 }
 
 body {
-  min-height: 100vh;
-  background: #090e1a;
+  background: #090d16;
   color: #e2e8f0;
   display: flex;
   justify-content: center;
-  padding: 25px 0;
+  padding: 20px 0;
 }
 
 .container {
   width: 92%;
-  max-width: 760px;
-  padding: 28px;
+  max-width: 680px;
+  padding: 24px;
   background: #111827;
-  border: 1px solid #263449;
-  border-radius: 16px;
-  box-shadow: 0 15px 45px #00000030;
+  border: 1px solid #1f2937;
+  border-radius: 14px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .header {
-  text-align: center;
-  font-size: 28px;
-  letter-spacing: 1.5px;
-  color: #60a5fa;
-  margin-bottom: 8px;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #38bdf8;
 }
 
-.header::after {
-  content: "Manage your money, one expense at a time.";
-  display: block;
-  margin-top: 10px;
+.export-btn {
+  background: #1e293b;
+  color: #38bdf8;
+  border: 1px solid #334155;
+  padding: 6px 12px;
+  border-radius: 6px;
   font-size: 13px;
-  font-weight: normal;
-  letter-spacing: 0;
-  color: #94a3b8;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.export-btn:hover {
+  background: #334155;
+}
+
+/* Summary Cards */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.summary-card {
+  background: #1f2937;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #374151;
+  text-align: center;
+}
+
+.summary-card p {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-bottom: 4px;
+}
+
+.summary-card h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.summary-card.income h3 {
+  color: #4ade80;
+}
+
+.summary-card.expense h3 {
+  color: #f87171;
+}
+
+.summary-card.balance.positive h3 {
+  color: #38bdf8;
+}
+
+.summary-card.balance.negative h3 {
+  color: #fbbf24;
 }
 
 /* Form */
-
 .new-expense-div {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin: 26px 0 22px;
+  gap: 8px;
+  margin-bottom: 16px;
+  background: #1f2937;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #374151;
 }
 
 .item-date,
 .name,
 .category,
-.money {
-  padding: 12px;
+.money,
+.type-select {
+  padding: 10px 12px;
   font-size: 14px;
-  color: #e2e8f0;
-  background: #0b1220;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  transition: border-color 0.2s;
+  color: #f8fafc;
+  background: #111827;
+  border: 1px solid #374151;
+  border-radius: 6px;
+  outline: none;
 }
 
 .item-date {
@@ -72,225 +128,186 @@ body {
 .item-date:focus,
 .name:focus,
 .category:focus,
-.money:focus {
-  border-color: #60a5fa;
-  outline: none;
+.money:focus,
+.type-select:focus {
+  border-color: #38bdf8;
 }
 
 .name {
-  flex: 1 1 160px;
-  min-width: 0;
+  flex: 1 1 180px;
 }
 
 .money {
-  width: 115px;
+  width: 100px;
 }
 
 .add-expense {
-  padding: 12px 20px;
+  padding: 10px 18px;
   font-size: 14px;
   font-weight: bold;
   color: white;
-  background: #3b82f6;
+  background: #0284c7;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
 }
 
 .add-expense:hover {
-  background: #2563eb;
-  transform: translateY(-1px);
+  background: #0369a1;
 }
 
 .secondary {
-  padding: 8px 13px;
+  padding: 6px 12px;
   font-size: 13px;
-  color: #e2e8f0;
-  background: #263449;
-  border: 1px solid #334155;
-  border-radius: 7px;
+  color: #cbd5e1;
+  background: #374151;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
 }
 
 .secondary:hover {
-  background: #37465c;
+  background: #4b5563;
 }
 
-/* Category filters */
+/* Controls & Search */
+.controls-bar {
+  margin-bottom: 12px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #38bdf8;
+}
 
 .filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 6px;
+  margin-bottom: 16px;
 }
 
 .chip {
-  padding: 8px 12px;
+  padding: 6px 12px;
   font-size: 12px;
-  color: #cbd5e1;
-  background: #0b1220;
-  border: 1px solid #334155;
-  border-radius: 8px;
+  color: #9ca3af;
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 20px;
   cursor: pointer;
-  transition: 0.2s;
-}
-
-.chip:hover {
-  border-color: #60a5fa;
-  color: white;
+  font-weight: 500;
 }
 
 .chip.active {
   color: white;
-  background: #1d4ed8;
-  border-color: #3b82f6;
+  background: #0284c7;
+  border-color: #0284c7;
 }
 
-/* Expense list */
+/* List */
+.list-container {
+  max-height: 350px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
 
 .expense-div {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 15px;
-  margin-bottom: 10px;
-  background: #172235;
-  border: 1px solid #29384e;
-  border-radius: 10px;
-  transition: border-color 0.2s, transform 0.2s;
-}
-
-.expense-div:hover {
-  border-color: #475569;
-  transform: translateY(-1px);
+  gap: 10px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 8px;
 }
 
 .expense-div.editing {
-  border-color: #60a5fa;
+  border-color: #38bdf8;
 }
 
 .delete-expense {
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   flex-shrink: 0;
-  font-size: 19px;
-  line-height: 1;
-  color: #fca5a5;
-  background: #3b1e2b;
-  border: 1px solid #633044;
-  border-radius: 7px;
+  font-size: 16px;
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.15);
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
 }
 
 .delete-expense:hover {
-  color: white;
   background: #dc2626;
+  color: white;
 }
 
 .expense-date {
   font-size: 12px;
-  color: #94a3b8;
+  color: #9ca3af;
   white-space: nowrap;
 }
 
 .expense-name {
   flex: 1;
-  min-width: 0;
-  font-size: 14px;
-  line-height: 1.8;
-  overflow-wrap: anywhere;
+  font-size: 15px;
+  word-break: break-word;
 }
 
 .badge {
-  display: inline-block;
   margin-left: 8px;
   padding: 2px 8px;
   font-size: 11px;
-  color: #93c5fd;
-  background: #1e3a5f;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
   border-radius: 20px;
-  white-space: nowrap;
 }
 
-.expense-money {
-  font-size: 15px;
-  font-weight: bold;
+.expense-money.income {
   color: #4ade80;
-  white-space: nowrap;
+  font-weight: bold;
+}
+
+.expense-money.expense {
+  color: #f87171;
+  font-weight: bold;
 }
 
 .empty {
   text-align: center;
-  color: #94a3b8;
-  padding: 30px 0;
+  color: #6b7280;
+  padding: 20px 0;
   font-size: 14px;
 }
 
-/* Total */
-
-.total-expense-div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin-top: 24px;
-  padding: 20px;
-  background: linear-gradient(120deg, #172c4b, #18233a);
-  border: 1px solid #31558a;
-  border-radius: 12px;
-}
-
-.text {
-  font-size: 15px;
-  font-weight: bold;
-  color: #cbd5e1;
-}
-
-.total-dollars {
-  font-size: 26px;
-  font-weight: bold;
-  color: #60a5fa;
-}
-
-/* Mobile */
-
+/* Responsive */
 @media (max-width: 600px) {
-  body {
-    padding: 12px 0;
+  .summary-grid {
+    grid-template-columns: 1fr;
   }
 
-  .container {
-    width: 95%;
-    padding: 18px 13px;
-    border-radius: 12px;
-  }
-
-  .header {
-    font-size: 22px;
-  }
-
-  .new-expense-div {
-    margin-top: 22px;
-  }
-
+  .name,
+  .money,
+  .type-select,
   .item-date,
   .category {
-    flex: 1 1 40%;
-    min-width: 0;
-  }
-
-  .money,
-  .add-expense {
-    flex: 1;
-    min-width: 0;
+    flex: 1 1 100%;
+    width: 100%;
   }
 
   .expense-div {
     flex-wrap: wrap;
-    gap: 10px;
-    padding: 12px;
   }
 
   .expense-date {
@@ -300,26 +317,5 @@ body {
   .expense-name {
     flex: 1 1 100%;
     order: 3;
-  }
-
-  .expense-money {
-    margin-left: auto;
-  }
-
-  .delete-expense {
-    width: 32px;
-    height: 32px;
-  }
-
-  .total-expense-div {
-    padding: 16px 12px;
-  }
-
-  .text {
-    font-size: 13px;
-  }
-
-  .total-dollars {
-    font-size: 21px;
   }
 }
