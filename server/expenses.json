@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1791961472472,
+    "type": "income",
+    "date": "2026-10-14",
+    "itemName": "salary",
+    "category": "Salary",
+    "money": 10000
+  },
+  {
+    "id": 1791961076913,
+    "type": "expense",
+    "date": "2026-10-14",
+    "itemName": "tea",
+    "category": "Food",
+    "money": 76
+  }
+]
