@@ -9,11 +9,6 @@ import { today, getTotal, exportCSV } from "./utils";
 
 const API = "https://react-expense-tracker-bovu.onrender.com";
 
-fetch(API + "/api/expenses")
-fetch(API + "/api/expenses", {
-fetch(API + "/api/expenses/" + editId, {
-fetch(API + "/api/expenses/" + id, { method: "DELETE" });
-
 function App() {
   // ---------- state: data that can change ----------
   const [expenses, setExpenses] = useState([]);
