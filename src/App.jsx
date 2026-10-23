@@ -7,6 +7,8 @@ import FilterBar from "./components/FilterBar";
 import ExpenseList from "./components/ExpenseList";
 import { today, getTotal, exportCSV } from "./utils";
 
+const API = "https://react-expense-tracker-bovu.onrender.com";
+
 function App() {
   // ---------- state: data that can change ----------
   const [expenses, setExpenses] = useState([]);
@@ -27,7 +29,7 @@ function App() {
 
   // ---------- load entries from the server (runs once, when the app opens) ----------
   useEffect(function () {
-    fetch("/api/expenses")
+    	fetch(API + "/api/expenses")
       .then(function (res) {
         return res.json();
       })
@@ -71,7 +73,7 @@ function App() {
 
     if (editId === null) {
       // ADD: send to the server, then put the saved entry first
-      const res = await fetch("/api/expenses", {
+      const res = await fetch(API + "/api/expenses", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(entry),
@@ -81,7 +83,7 @@ function App() {
       setExpenses([savedEntry, ...expenses]);
     } else {
       // EDIT: send to the server, then replace that entry in our list
-      const res = await fetch("/api/expenses/" + editId, {
+      const res = await 	fetch(API + "/api/expenses/" + editId, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(entry),
@@ -114,7 +116,7 @@ function App() {
   }
 
   async function handleDelete(id) {
-    await fetch("/api/expenses/" + id, { method: "DELETE" });
+    await fetch(API + "/api/expenses/" + id, { method: "DELETE" });
 
     // copy every entry except the one we are deleting
     const newList = [];
