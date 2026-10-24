@@ -29,7 +29,7 @@ function App() {
 
   // ---------- load entries from the server (runs once, when the app opens) ----------
   useEffect(function () {
-    	fetch(API + "/api/expenses")
+    fetch(API + "/api/expenses")
       .then(function (res) {
         return res.json();
       })
@@ -83,7 +83,7 @@ function App() {
       setExpenses([savedEntry, ...expenses]);
     } else {
       // EDIT: send to the server, then replace that entry in our list
-      const res = await 	fetch(API + "/api/expenses/" + editId, {
+      const res = await fetch(API + "/api/expenses/" + editId, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(entry),
@@ -166,7 +166,7 @@ function App() {
   return (
     <div className="container">
       <div className="app-header">
-        <h1 className="header">EXPENSE TRACKER</h1>
+        <h1 className="header">Expense Tracker</h1>
         <button
           className="export-btn"
           onClick={function () {

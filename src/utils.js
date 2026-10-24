@@ -7,7 +7,15 @@ export function today() {
 
 // Turns 25.5 into "$25.50"
 export function money(number) {
-  return "$" + number.toFixed(2);
+  const text = Math.abs(number).toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+  if (number < 0) {
+    return "-$" + text;
+  }
+  return "$" + text;
 }
 
 // Adds up the money of all entries of one type ("income" or "expense")

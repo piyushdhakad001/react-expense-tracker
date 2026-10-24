@@ -1,27 +1,30 @@
 import { money } from "../utils";
 
 function SummaryCards({ totalIncome, totalExpense, netBalance }) {
-  // green-blue when balance is zero or more, yellow when it is below zero
-  let balanceClass = "summary-card balance positive";
+  // the balance turns red when it is below zero
+  let balanceClass = "summary-balance positive";
   if (netBalance < 0) {
-    balanceClass = "summary-card balance negative";
+    balanceClass = "summary-balance negative";
   }
 
   return (
-    <div className="summary-grid">
-      <div className="summary-card income">
-        <p>Total Income</p>
-        <h3>{money(totalIncome)}</h3>
+    <section className="summary" aria-label="Summary">
+      <div>
+        <p className="summary-label">Net balance</p>
+        <p className={balanceClass}>{money(netBalance)}</p>
       </div>
-      <div className="summary-card expense">
-        <p>Total Expenses</p>
-        <h3>{money(totalExpense)}</h3>
-      </div>
-      <div className={balanceClass}>
-        <p>Net Balance</p>
-        <h3>{money(netBalance)}</h3>
-      </div>
-    </div>
+
+      <dl className="summary-lines">
+        <div className="summary-line">
+          <dt>Income</dt>
+          <dd className="income">{money(totalIncome)}</dd>
+        </div>
+        <div className="summary-line">
+          <dt>Expenses</dt>
+          <dd className="expense">{money(totalExpense)}</dd>
+        </div>
+      </dl>
+    </section>
   );
 }
 
